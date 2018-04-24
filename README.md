@@ -1,2 +1,2 @@
 # book-list-client
-Client Side 
+Client Side for week 3 project for Code 301
