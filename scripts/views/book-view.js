@@ -1,15 +1,22 @@
 'use strict';
-var app = app || {}
+var app = app || {};
 
 (function(module) {
-var bookView = {};
-bookView.initIndexPage = function(ctx) {
-  ('.container').hide();
-  ('.book-view').show();
-  app.Book.all.map(a => $('#book-view').append(a.toHtml()));
+  var bookView = {};
 
+  bookView.initIndexPage = function() {
+    ('.container').hide();
+    ('.book-view').show();
+    app.Book.all.map(a => $('#book-list').append(a.toHtml()));
 }
-$(document).ready(app.Book.fetchAll(bookView.initIndexPage));
 
-module.bookView = bookView
-}) (app);
+  module.bookView = bookView;
+}) (app)
+
+$(function() {
+  app.Book.fetchAll(app.bookView.initIndexPage);
+})
+
+// $(document).ready(function() {
+//     app.Book.fetchAll(app.bookView.initIndexPage);
+//   });

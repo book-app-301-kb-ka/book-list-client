@@ -16,27 +16,24 @@ var app = app || {};
 
 (function(module){
 function Book (rawDataObj){
-Object.keys(rawDataObj).forEach(key => this[key] = rawDataObj[key]);
-
+  Object.keys(rawDataObj).forEach(key => this[key] = rawDataObj[key]);
 }
-Book.all = []
+
+Book.all = [];
+
 Book.prototype.toHtml = function(){
   var template = Handlebars.compile($('#book-list-template').text());
-}
-Book.loadAll = rows => {
-  rows.sort(title)
-  Book.all = rows.map(bookObject => new Book(bookObject));
-  Book.fetchAll = callback => {
-  $.get('/api/v1/books')
-  .then(results => {
-    Book.loadAll(results);
-    callback()
-    if(err){
-      errorCallback();
-    }
-  })
-}
-}
-module.Book = Book;
+};
+
+Book.loadAll = rows => Book.all = rows.sort((a,b) => b.title - a.title).map(book => new Book(book));
+ 
+Book.fetchAll = callback => 
+  console.log(ENV.apiUrl);
+  $.get(`${ENV.apiUrl}/api/v1/books`)
+  .then(Book.loadAll)
+  .then(callback);
+  // .catch(errorCallback);
+
+  module.Book = Book;
 }) (app);
 
