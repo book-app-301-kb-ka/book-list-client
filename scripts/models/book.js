@@ -32,8 +32,13 @@ Book.fetchAll = callback => {
   // console.log(ENV.apiUrl);
   $.get(`${ENV.apiUrl}/api/v1/books`)
   .then(Book.loadAll)
-  .then(callback);
-  // .catch(errorCallback);
+  .then(callback)
+  .catch(errorCallback);
+}
+
+function errorCallback(err){
+  console.error(err);;
+  module.errorView.initErrorPage(err);
 }
 
   module.Book = Book;
