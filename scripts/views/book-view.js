@@ -10,7 +10,7 @@ var app = app || {};
     app.Book.all.map(a => $('#book-list').append(a.toHtml()));
 }
 
-  bookView.initDetailPage = function(ctx) {
+  bookView.initDetailPage = function() {
     $('.container').hide();
     $('.book-view').hide();
     $('.detail-view').show();
@@ -26,7 +26,8 @@ var app = app || {};
 
 $(function() {
   app.Book.fetchAll(app.bookView.initIndexPage);
-  app.Book.fetchOne(app.bookView.initDetailPage);
+  // let obj = {params: {book_id:2}};
+  // app.Book.fetchOne(app.bookView.initDetailPage);
 })
 
 // $(document).ready(function() {
