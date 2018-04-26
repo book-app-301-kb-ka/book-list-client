@@ -47,6 +47,12 @@ Book.fetchOne = (callback, ctx) => {
   .catch(errorCallback);
 }
 
+Book.create = book =>{
+  $.post(`${ENV.apiUrl}/api/v1/books`, book)
+  .then(() => page('/'))
+  .catch(errorCallback);
+} ;
+
 function errorCallback(err){
   console.error(err);;
   module.errorView.initErrorPage(err);

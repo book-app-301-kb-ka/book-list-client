@@ -30,9 +30,22 @@
     </section>
     <section class="detail-view"></section>
     <section id="about" class="container"></section>
+    <section id="add-book" class="new-book-view">
+      <form>
+        <input type='text' name="author" placeholder="Author Name">
+        <input type='text' name="booktitle" placeholder="Book Name">
+        <input type='text' name="imgurl" placeholder="Image URL">
+        <input type='text' name="isbn" placeholder="isbn">
+        <input type='text' name="description" placeholder="Description">
+        <button>Add Book</button>
+
+      </form>
+    </section>
+    
     <section id="error-message" class="error-view"></section>
    </main>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
    <script src="./scripts/models/book.js"></script>
    <script src="./scripts/views/book-view.js"></script>

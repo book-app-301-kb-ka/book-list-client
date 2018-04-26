@@ -21,6 +21,29 @@ var app = app || {};
     })
   }
 
+  bookView.initAddPage = function() {
+    $('.container').hide();
+    $('.book-view').hide();
+    $('.detail-view').hide();
+    $('.new-book-view').show();
+  }
+
+  $('.new-book-view').on('submit', createNewBook);
+  function createNewBook(e) {
+    e.preventDefault();
+    let book ={
+      author:$('.new-book-view input[name="author"]').val(),
+      title:$('.new-book-view input[name="booktitle"]').val(),
+      isbn:$('.new-book-view input[name="isbn"]').val(),
+      image_url:$('.new-book-view input[name="imgurl"]').val(),
+      description:$('.new-book-view input[name="Description"]').val(),
+    }
+    console.log('Book:', book)
+    $.post(`${ENV.apiUrl}/api/v1/books`, book)
+    .then(app.Book.fetchAll(bookView.initIndexPage))
+    .catch(console.error);
+  }
+
   module.bookView = bookView;
 }) (app)
 
