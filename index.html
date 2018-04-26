@@ -11,10 +11,15 @@
       <img src="{{image_url}}">
       <h1>{{title}}</h1>
       <h2>{{author}}</h2>
-      
     </header>
-  
-  
+  </script>
+  <script id="book-detail-template" type="text/x-handlebars-template">
+    <img src="{{image_url}}">
+    <h1>{{title}}</h1>
+    <h2>{{author}}</h2>
+  </script>
+  <script id="error-message-template" type="text/x-handlebars-template">
+    <h1>{{err}}</h1>
   </script>
 </head>
 
@@ -23,7 +28,9 @@
     <section id="book-list" class="book-view">
       <ul></ul>
     </section>
+    <section class="detail-view"></section>
     <section id="about" class="container"></section>
+    <section id="error-message" class="error-view"></section>
    </main>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
