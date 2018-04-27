@@ -11,21 +11,50 @@
       <img src="{{image_url}}">
       <h1>{{title}}</h1>
       <h2>{{author}}</h2>
-      
     </header>
-  
-  
+  </script>
+  <script id="book-detail-template" type="text/x-handlebars-template">
+    <img src="{{image_url}}">
+    <h1>{{title}}</h1>
+    <h2>{{author}}</h2>
+  </script>
+  <script id="error-message-template" type="text/x-handlebars-template">
+    <h1>{{err}}</h1>
   </script>
 </head>
 
 <body>
+  <header>
+    <nav class="main-nav">
+      <div class="icon-menu"></div>
+      <ul>
+        <a href="/">Home</a>
+        <a href="/add">Add a Book</a>
+      </ul>
+    </nav>
+  </header>
   <main>
     <section id="book-list" class="book-view">
       <ul></ul>
     </section>
+    <section class="detail-view"></section>
     <section id="about" class="container"></section>
+    <section id="add-book" class="new-book-view">
+      <form>
+        <input type='text' name="author" placeholder="Author Name">
+        <input type='text' name="booktitle" placeholder="Book Name">
+        <input type='text' name="imgurl" placeholder="Image URL">
+        <input type='text' name="isbn" placeholder="isbn">
+        <input type='text' name="description" placeholder="Description">
+        <button>Add Book</button>
+
+      </form>
+    </section>
+    
+    <section id="error-message" class="error-view"></section>
    </main>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
    <script src="./scripts/models/book.js"></script>
    <script src="./scripts/views/book-view.js"></script>
