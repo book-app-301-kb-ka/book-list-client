@@ -7,11 +7,6 @@ ENV.developmentApiUrl = 'http://localhost:3000';
 
 ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
 
-// if(ENV.isProduction){
-//   ENV.apiUrl = ENV.productionApiUrl;
-// } else{
-//   ENV.apiUrl = ENV.developmentAprUrl;
-// }
 var app = app || {};
 
 (function(module){
@@ -40,7 +35,7 @@ Book.fetchAll = callback => {
   .catch(errorCallback);
 }
 
-Book.fetchOne = (callback, ctx) => {
+Book.fetchOne = (ctx, callback) => {
   $.get(`${ENV.apiUrl}/api/v1/books/${ctx.params.book_id}`)
   .then(results => ctx.book = results[0])
   .then(callback)
@@ -48,7 +43,7 @@ Book.fetchOne = (callback, ctx) => {
 }
 
 Book.create = book =>{
-  $.post(`${ENV.apiUrl}/api/v1/books`, book)
+  $.post(`${ENV.apiUrl}/api/v1/books/add`, book)
   .then(() => page('/'))
   .catch(errorCallback);
 } ;
